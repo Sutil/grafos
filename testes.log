@@ -1,0 +1,6 @@
+src/java/run bfs testes/bfs/1.g: OK
+src/java/run bfs testes/bfs/2.g: OK
+src/java/run bfs testes/bfs/3.g: OK
+src/java/run bfs testes/bfs/4.g: OK
+src/java/run bfs testes/bfs/5.g: OK
+Total: 5  Errors: 0
