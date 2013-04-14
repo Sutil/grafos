@@ -5,19 +5,16 @@ public class Cor {
 	
 	private final String nome;
 	
-	private final String rgb;
-
-	private Cor(String nome, String rgb) {
+	private Cor(String nome) {
 		this.nome = nome;
-		this.rgb = rgb;
 	}
 	
-	public static Cor newInstance(String nome, String rgb) throws Exception{
+	public static Cor newInstance(String nome) throws Exception{
 		
-		if(nome == null || "".equals(nome) || rgb == null || rgb.length() != 6){
+		if(nome == null || "".equals(nome) ){
 			throw new Exception("Erro ao instanciar cor");
 		}
-		return new Cor(nome, rgb);
+		return new Cor(nome);
 	}
 	
 	public boolean equals(Object obj) {
@@ -36,8 +33,5 @@ public class Cor {
 		return nome;
 	}
 	
-	public String getRgb() {
-		return String.format("%s%s", "#", rgb);
-	}
 
 }

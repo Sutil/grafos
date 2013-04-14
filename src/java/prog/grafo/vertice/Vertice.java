@@ -3,14 +3,14 @@ package prog.grafo.vertice;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Vertice {
+public class Vertice implements Comparable<Vertice> {
 	
 	private String rotulo;
 	private List<Vertice> adjacentes = new LinkedList<Vertice>();
 	private Cor cor;
-	private Integer distanciadDaOrigem = Integer.MAX_VALUE;
+	private Integer d = Integer.MAX_VALUE;
+	private Integer f = Integer.MAX_VALUE;
 	private Vertice pai;
-	
 	
 	private Vertice(String rotulo){
 		this.rotulo = rotulo;
@@ -36,6 +36,17 @@ public class Vertice {
 	@Override
 	public String toString() {
 		return this.rotulo;
+	}
+	
+	@Override
+	public int compareTo(Vertice o) {
+		if (this.f > o.f){
+			return -1;
+		}
+		else if(this.f < o.f){
+			return 1;
+		}
+		return 0;
 	}
 	
 	public boolean addAdjacente(Vertice u){
@@ -69,12 +80,12 @@ public class Vertice {
 		this.cor = cor;
 	}
 	
-	public Integer getDistanciadDaOrigem() {
-		return distanciadDaOrigem;
+	public Integer getD() {
+		return d;
 	}
 	
-	public void setDistanciadDaOrigem(Integer distanciadDaOrigem) {
-		this.distanciadDaOrigem = distanciadDaOrigem;
+	public void setD(Integer d) {
+		this.d = d;
 	}
 	
 	public Vertice getPai() {
@@ -84,5 +95,15 @@ public class Vertice {
 	public void setPai(Vertice pai) {
 		this.pai = pai;
 	}
+	
+	public void setF(Integer f) {
+		this.f = f;
+	}
+	
+	public Integer getF() {
+		return f;
+	}
+
+	
 
 }

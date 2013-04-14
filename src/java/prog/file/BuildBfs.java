@@ -9,7 +9,7 @@ import prog.grafo.Grafo;
 import prog.grafo.vertice.Vertice;
 
 
-public class ReadingFile {
+public class BuildBfs {
 	
 	private Grafo grafo;
 	
@@ -32,6 +32,7 @@ public class ReadingFile {
 				grafo.addAdjacente(Vertice.newInstance(split[0]), Vertice.newInstance(split[1]));
 			}
 		}
+		
 		sc.close();
 		file.close();
 		return grafo;
