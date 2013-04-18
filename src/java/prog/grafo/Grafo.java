@@ -46,7 +46,7 @@ public class Grafo {
 	public List<Vertice> copy() throws Exception{
 		List<Vertice> vtcs = new LinkedList<Vertice>();
 		for (Vertice v: vertices){
-			vtcs.add(Vertice.newInstance(v.getRotulo()));
+			vtcs.add(Vertice.newInstance(v.getRotulo(), v.getF()));
 		}
 		return vtcs;
 	}

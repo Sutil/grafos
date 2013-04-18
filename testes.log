@@ -9,47 +9,13 @@ src/java/run ts  testes/ts/3.g: OK
 src/java/run ts  testes/ts/4.g: OK
 src/java/run ts  testes/ts/5.g: OK
 src/java/run scc testes/scc/1.g: OK
-src/java/run scc testes/scc/2.g: Fail
-  ** STDOUT **
-    r t u y q
-    v w s
-    z x
-  ** STDERR **
-  ** ERRORS **
-    saída incorreta
-      Expected: ['q t y', 'r', 's v w', 'u', 'x z']
-      Result  : ['q r t u y', 's v w', 'x z']
-src/java/run scc testes/scc/3.g: Fail
-  ** STDOUT **
-    m
-    n
-    p o
-    q
-    s r
-    u t
-    y v
-    w
-    x
-    z
-  ** STDERR **
-  ** ERRORS **
-    saída incorreta
-      Expected: ['m', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-      Result  : ['m', 'n', 'o p', 'q', 'r s', 't u', 'v y', 'w', 'x', 'z']
-src/java/run scc testes/scc/4.g: Fail
-  ** STDOUT **
-    1
-    3 5 4 2
-    6
-  ** STDERR **
-  ** ERRORS **
-    saída incorreta
-      Expected: ['1', '2 4 5', '3', '6']
-      Result  : ['1', '2 3 4 5', '6']
+src/java/run scc testes/scc/2.g: OK
+src/java/run scc testes/scc/3.g: OK
+src/java/run scc testes/scc/4.g: OK
 src/java/run scc testes/scc/5.g: OK
 src/java/run mst testes/mst/1.g: OK
 src/java/run mst testes/mst/2.g: OK
 src/java/run mst testes/mst/3.g: OK
 src/java/run mst testes/mst/4.g: OK
 src/java/run mst testes/mst/5.g: OK
-Total: 20  Errors: 3
+Total: 20  Errors: 0

@@ -14,7 +14,6 @@ public class Transposta {
 				t.getVertices().get(t.getPositionVertice(u)).addAdjacente(t.getVertices().get(t.getPositionVertice(v)));
 			}
 		}
-		
 		return t;
 	}
 }

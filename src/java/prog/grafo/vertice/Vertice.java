@@ -16,11 +16,23 @@ public class Vertice implements Comparable<Vertice> {
 		this.rotulo = rotulo;
 	}
 	
+	private Vertice(String rotulo, Integer f){
+		this.rotulo  = rotulo;
+		this.f = f;
+	}
+	
 	public static Vertice newInstance(String rotulo) throws Exception{
 		if(rotulo == null || "".equals(rotulo)){
 			throw new  Exception("rotulo não pode ser nulo ou vazio.");
 		}
 		return new Vertice(rotulo);
+	}
+	
+	public static Vertice newInstance(String rotulo, Integer f) throws Exception{
+		if(rotulo == null || "".equals(rotulo)){
+			throw new  Exception("rotulo não pode ser nulo ou vazio.");
+		}
+		return new Vertice(rotulo, f);
 	}
 	
 	@Override
@@ -46,7 +58,7 @@ public class Vertice implements Comparable<Vertice> {
 		else if(this.f < o.f){
 			return 1;
 		}
-		return 0;
+		return 1;
 	}
 	
 	public boolean addAdjacente(Vertice u){

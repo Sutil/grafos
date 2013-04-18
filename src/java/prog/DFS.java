@@ -19,13 +19,14 @@ public class DFS {
 	
 private List<Vertice> lista = new LinkedList<Vertice>();
 	
-	private final Cor cinza = Cor.newInstance("CINZA");
-	private final Cor preto = Cor.newInstance("PRETO");
-	private final Cor branco = Cor.newInstance("BRANCO");
+	private final Cor cinza = Cor.newInstance("GRAY");
+	private final Cor preto = Cor.newInstance("BLACK");
+	private final Cor branco = Cor.newInstance("WAIT");
 	private int tempo;
 	private Componente componente = new Componente();
 	
 	private List<Componente> componentes = new LinkedList<Componente>();
+	private Grafo grafo;
 	
 	private DFS() throws Exception{
 	}
@@ -36,6 +37,7 @@ private List<Vertice> lista = new LinkedList<Vertice>();
 	
 	
 	public List<Vertice> dfs(Grafo g, boolean ordenarLista) throws Exception{
+		
 		for (Vertice v : g.getVertices()){
 			v.setCor(branco);
 		}
@@ -45,20 +47,21 @@ private List<Vertice> lista = new LinkedList<Vertice>();
 		if(ordenarLista){
 			Collections.sort(vertices);
 		}
-		
 		for (Vertice u : vertices){
 			if(u.getCor().equals(branco)){
-				componente = new Componente();
 				dfsVisit(u);
 				Componente copy = componente.copy();
 				componentes.add(copy);
+				componente = new Componente();
 			}
 		}
+		grafo = g;
 		return lista;
 	}
 
 	private void dfsVisit(Vertice u) throws Exception {
 		u.setCor(cinza);
+		componente.addVertice(u);
 		tempo ++;
 		u.setD(tempo);
 		for (Vertice v : u.getAdjacentes()){
@@ -70,11 +73,16 @@ private List<Vertice> lista = new LinkedList<Vertice>();
 		u.setCor(preto);
 		u.setF(tempo++);
 		lista.add(0, u);
-		componente.addVertice(u);
+		
+		
 	}
 	
 	public List<Componente> getComponentes() {
 		return componentes;
+	}
+	
+	public Grafo getGrafo() {
+		return grafo;
 	}
 
 }
