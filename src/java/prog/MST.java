@@ -14,17 +14,8 @@ public class MST {
 	
 	public static List<Aresta> mst(Grafo g){
 		
-		List<Aresta> arvore = new LinkedList<Aresta>(){
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public boolean add(Aresta e) {
-				if(!contains(e)){
-					return super.add(e);
-				}
-				return true;
-			}
-		};
+		List<Aresta> arvore = new LinkedList<Aresta>();
+		
 		
 		for(Vertice v: g.getVertices()){
 			 makeSet(v);

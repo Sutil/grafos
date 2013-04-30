@@ -121,5 +121,9 @@ public class Grafo {
 	public List<Aresta> getArestas() {
 		return arestas;
 	}
+	
+	public void setVertices(List<Vertice> vertices) {
+		this.vertices = vertices;
+	}
 
 }

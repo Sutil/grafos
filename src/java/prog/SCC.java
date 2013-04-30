@@ -10,11 +10,12 @@ public class SCC {
 	
 	public static List<Componente> scc(Grafo g) throws Exception{
 		DFS dfs = DFS.newInstance();
-		dfs.dfs(g, false);
+		List<Vertice> verticesOrdenados = dfs.dfs(g);
+		g.setVertices(verticesOrdenados);
 		g = dfs.getGrafo();
 		Grafo t = Transposta.transpor(g);
-		DFS dfsTransposto = DFS.newInstance();
-		dfsTransposto.dfs(t, true);
+		SccDFS dfsTransposto = SccDFS.newInstance();
+		dfsTransposto.dfs(t);
 		return dfsTransposto.getComponentes();
 		
 	}

@@ -10,7 +10,7 @@ public class TS  {
 	
 	public List<Vertice> ts(Grafo g) throws Exception{
 		DFS dfs = DFS.newInstance();
-		List<Vertice> listaDeSaida = dfs.dfs(g, false);
+		List<Vertice> listaDeSaida = dfs.dfs(g);
 		return listaDeSaida;
 	}
 
