@@ -11,15 +11,12 @@ import prog.grafo.vertice.Vertice;
 public class MST {
 	
 	
+	private List<Aresta> arvore = new LinkedList<Aresta>();
 	
-	public static List<Aresta> mst(Grafo g){
-		
-		List<Aresta> arvore = new LinkedList<Aresta>();
-		
+	public List<Aresta> mst(Grafo g){
 		
 		for(Vertice v: g.getVertices()){
 			 makeSet(v);
-			 
 		}
 		Collections.sort(g.getArestas());
 		for(Aresta a : g.getArestas()){
@@ -27,27 +24,25 @@ public class MST {
 				arvore.add(a);
 				union(a.getB(), a.getA());
 			}
-			
 		}
 		return arvore;
-		
 	}
 	
 	
-	public static void makeSet(Vertice v){
+	protected void makeSet(Vertice v){
 		v.setPai(v);
 		v.setD(0);
 	}
 	
 	
-	public static Vertice findSet(Vertice x){
+	protected Vertice findSet(Vertice x){
 		if(!x.equals(x.getPai())){
 			x.setPai(findSet(x.getPai()));
 		}
 		return x.getPai();
 	}
 	
-	public static void link(Vertice u, Vertice v){
+	protected void link(Vertice u, Vertice v){
 		if((int)u.getD() > (int)v.getD()){
 			v.setPai(u);
 		}
@@ -59,10 +54,22 @@ public class MST {
 		}
 	}
 	
-	public static void union(Vertice u, Vertice v){
+	protected void union(Vertice u, Vertice v){
 		link(findSet(u), findSet(v));
 	}
-	 
 	
+	public String formatScreen(){
+		StringBuilder sb = new StringBuilder();
+    	for (int i = 0; i < arvore.size(); i++){
+    		Aresta w = arvore.get(i);
+    		if(i == arvore.size() - 1){
+    			sb.append(String.format("%s %s", w.getA(), w.getB()));
+    		}
+    		else{
+    			sb.append(String.format("%s %s\n", w.getA(), w.getB()));
+    		}
+    	}
+    	return sb.toString();
+	}
 
 }

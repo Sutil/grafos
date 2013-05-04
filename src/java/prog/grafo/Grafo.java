@@ -2,7 +2,6 @@ package prog.grafo;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.SortedSet;
 
 import prog.grafo.aresta.Aresta;
 import prog.grafo.vertice.Vertice;

@@ -13,21 +13,21 @@ import prog.grafo.vertice.Vertice;
 public class Main {
     public static void main(String[] args) throws Exception {
         String alg = args[0];
-        
+        String path = args[1];
         switch (alg) {
 		case "bfs":
-			bfs(args[1]);
+			bfs(path);
 			break;
 			
 		case "mst":
-			mst(args[1]);
+			mst(path);
 			break;
 		case "ts" :
-			ts(args[1]);
+			ts(path);
 			break;
 			
 		case "scc":
-			scc(args[1]);
+			scc(path);
 		default:
 			break;
 		}
@@ -45,46 +45,25 @@ public class Main {
     public static void mst(String path) throws Exception{
     	BuildMst builder = new BuildMst();
     	Grafo g = builder.montaGrafo(path);
-    	List<Aresta> mst = MST.mst(g);
-    	StringBuilder sb = new StringBuilder();
-    	for (int i = 0; i < mst.size(); i++){
-    		Aresta w = mst.get(i);
-    		if(i == mst.size() - 1){
-    			sb.append(String.format("%s %s", w.getA(), w.getB()));
-    		}
-    		else{
-    			sb.append(String.format("%s %s\n", w.getA(), w.getB()));
-    		}
-    		
-    	}
-    	System.out.println(sb.toString());
+    	MST mst = new MST();
+    	mst.mst(g);
+    	System.out.println(mst.formatScreen());
     }
     
     public static void ts(String path) throws Exception{
     	BuildBfs builder = new BuildBfs();
-    	Grafo grafo = builder.montaGrafo(path);
+    	Grafo g = builder.montaGrafo(path);
     	TS ts = new TS();
-    	List<Vertice> listaOrdenada = ts.ts(grafo);
-    	StringBuilder sb = new StringBuilder();
-    	for(int i = 0 ; i < listaOrdenada.size(); i++){
-    		Vertice v = listaOrdenada.get(i);
-    		if(i < listaOrdenada.size()-1){
-    			sb.append(String.format("%s\n", v.getRotulo()));
-    		}
-    		else{
-    			sb.append(String.format("%s", v.getRotulo()));
-    		}
-    	}
-    	System.out.println(sb.toString());
+    	ts.ts(g);
+    	System.out.println(ts.formatScreen());
     	
     }
     
     public static void scc(String path) throws Exception{
     	BuildBfs b = new BuildBfs();
     	Grafo grafo = b.montaGrafo(path);
-    	List<Componente> componentes = SCC.scc(grafo);
-    	for (Componente c : componentes){
-    		System.out.println(c.toString());
-    	}
+    	SCC scc = new SCC();
+    	List<Componente> componentes = scc.scc(grafo);
+    	System.out.println(scc.formatScreen());
     }
 }

@@ -8,16 +8,34 @@ import prog.grafo.vertice.Vertice;
 
 public class SCC {
 	
-	public static List<Componente> scc(Grafo g) throws Exception{
-		DFS dfs = DFS.newInstance();
+	private DFS dfs;
+	private SccDFS dfsTransposto; 
+	
+	public List<Componente> scc(Grafo g) throws Exception{
+		dfs = DFS.newInstance();
 		List<Vertice> verticesOrdenados = dfs.dfs(g);
 		g.setVertices(verticesOrdenados);
 		g = dfs.getGrafo();
 		Grafo t = Transposta.transpor(g);
-		SccDFS dfsTransposto = SccDFS.newInstance();
+		dfsTransposto = SccDFS.newInstance();
 		dfsTransposto.dfs(t);
 		return dfsTransposto.getComponentes();
 		
+	}
+	
+	public String formatScreen(){
+		StringBuilder sb = new StringBuilder();
+		List<Componente> componentes = dfsTransposto.getComponentes();
+		for (int i = 0; i < componentes.size(); i++){
+			Componente c = componentes.get(i);
+			if(i != componentes.size() - 1){
+				sb.append(c.toString()).append("\n");
+			}
+			else{
+				sb.append(c.toString());
+			}
+    	}
+		return sb.toString();
 	}
 
 }

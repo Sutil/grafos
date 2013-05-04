@@ -15,19 +15,19 @@ import prog.grafo.vertice.Vertice;
  */
 public class DFS {
 
-	private List<Vertice> listaEmOrdemDePeso = new LinkedList<Vertice>();
+	protected List<Vertice> listaEmOrdemDePeso = new LinkedList<Vertice>();
 
-	private final Cor cinza = Cor.newInstance("GRAY");
-	private final Cor preto = Cor.newInstance("BLACK");
-	private final Cor branco = Cor.newInstance("WAIT");
-	private int tempo;
+	protected final Cor cinza = Cor.newInstance("GRAY");
+	protected final Cor preto = Cor.newInstance("BLACK");
+	protected final Cor branco = Cor.newInstance("WAIT");
+	protected int tempo;
 
-	private Grafo grafo;
+	protected Grafo grafo;
 
-	private DFS() throws Exception {
+	protected DFS() throws Exception {
 	}
 
-	public static DFS newInstance() throws Exception {
+	protected static DFS newInstance() throws Exception {
 		return new DFS();
 	}
 
@@ -48,7 +48,7 @@ public class DFS {
 		return listaEmOrdemDePeso;
 	}
 
-	private void dfsVisit(Vertice u) throws Exception {
+	protected void dfsVisit(Vertice u) throws Exception {
 		u.setCor(cinza);
 		tempo++;
 		u.setD(tempo);
